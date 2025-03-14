@@ -6,9 +6,13 @@ public class Flower {
 
     public Flower(double[] parameters,String flowerName){
         this.parameters = parameters;
-        if(flowerName == null) /*go_kNN()*/ this.flowerName = "Uknown";
-        else this.flowerName = flowerName;
-//        this.flowerName = flowerName;
+//        if(flowerName == null) /*go_kNN()*/ this.flowerName = "Uknown";
+//        else this.flowerName = flowerName;
+        this.flowerName = flowerName;
+    }
+
+    public Flower(double[] parameters) {
+        this.parameters = parameters;
     }
     //if String == null -> kNN.
 
