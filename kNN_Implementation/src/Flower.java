@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class Flower {
+public class Flower implements Comparable<Flower>{
     private double[] parameters;
     private String flowerName;
 
@@ -38,5 +38,19 @@ public class Flower {
                 "parameters=" + Arrays.toString(parameters) +
                 ", flowerName='" + flowerName + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Flower o) {
+        if(sum(this.getParameters()) == sum(o.getParameters()) && flowerName.equals(o.getFlowerName())){
+            return 1;
+        } else return 0;
+    }
+    public double sum(double[] params){
+        double sum = 0;
+        for(Double d : params){
+            sum+=d;
+        }
+        return sum;
     }
 }
