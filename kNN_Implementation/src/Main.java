@@ -24,18 +24,21 @@ public class Main {
         System.out.println("Number of correct ANSWERS: "+parts[1] + "\n" + "The percent of experiment accuracy: " + parts[0]);
         System.out.println("Now you can enter yours flower to check the type of this flower" +
                 "\n" + "Enter parameters(sizes) into console one-by-one" + "\n" +
-                "If you don't want to do it or you want to stop just enter \".\"");
-        while(!scanner.nextLine().equals(".")){
+                "Do you want to continue? type \"yes\" or \"no\"");
+        while(!scanner.nextLine().equals("!")){
             double[] newVec = new double[4];
-            for (int i = 0; i < newVec.length; i++) {
-                String s = scanner.nextLine();
-                if(!s.equals(".")) {
-                    newVec[i] = Double.parseDouble(s);
-                } else break;
+            String s1 = scanner.nextLine();
+            if(s1.equals("no")) break;
+            else {
+                System.out.println("Start entering the parameters");
+                for (int i = 0; i < newVec.length; i++) {
+                        newVec[i] = scanner.nextDouble();
+                }
+                Flower f = new Flower(newVec);
+                classifyOneFlower(f, k, trainingDataBase);
+                System.out.println("Yours iris type is " + f.getFlowerName());
+                System.out.println("Do you want to continue? type \"yes\" or \"no\"");
             }
-            Flower f = new Flower(newVec);
-            classifyOneFlower(f,k,trainingDataBase);
-            System.out.println(f.getFlowerName());
         }
     }
 
