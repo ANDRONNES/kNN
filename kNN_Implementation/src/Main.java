@@ -10,13 +10,16 @@ public class Main {
 
 
     public static void main(String[] args) {
+        //Data Loading
         trainingDataBase = loadTrainingData("iris_training.txt");
         testingData = loadTestingDataWitoutAnswers("iris_test.txt");
+        testingDataWithAnswers = loadTrainingData("iris_test.txt");
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter number k(number of neighbours)");
         int k = scanner.nextInt();
+
         classifyFLowers(trainingDataBase, testingData, k);
-        testingDataWithAnswers = loadTrainingData("iris_test.txt");
         String[] parts = compareResultWithCorrectAnswers(testingDataWithAnswers, testingData).split(";");
         System.out.println("Number of correct ANSWERS: "+parts[1] + "\n" + "The percent of experiment accuracy: " + parts[0]);
         System.out.println("Now you can enter yours flower to check the type of this flower" +
@@ -74,7 +77,6 @@ public class Main {
             for (int j = 0; j < trainingDataBase.size(); j++) {
                 KNearestNeighbours.put(euclideanDistance(trainingDataBase.get(j).getParameters(),
                         testingData.get(i).getParameters()), trainingDataBase.get(j).getFlowerName());
-//                System.out.println(KNearestNeighbours);
             }
             int counter = 0;
             List<String> firstKAnswers = new ArrayList<>();
@@ -89,16 +91,10 @@ public class Main {
             }
             testingData.get(i).setFlowerName(theMostFrequentAnswer(firstKAnswers));
         }
-//        System.out.println(testingData);
-        /*for (Flower f : testingData){
-            System.out.println(f);
-        }*/
     }
 
 
     public static String theMostFrequentAnswer(List<String> list) {
-//        Set<String> set = new HashSet<>(list);
-//        if(set.size() > 1){
         Collections.sort(list);
         String theMostFrequentWord = list.get(0);
         int maxCount = 1;
@@ -125,7 +121,6 @@ public class Main {
                     .map(Map.Entry::getKey)
                     .orElse(null);*/
         return theMostFrequentWord;
-//        } else return list.get(0);
     }
 
     public static List<Flower> loadTestingDataWitoutAnswers(String path) {
@@ -144,8 +139,6 @@ public class Main {
                 flowersTestingDataBase.add(new Flower(params));
 
             }
-
-//            System.out.println(flowersTestingDataBase);
         } catch (Exception e) {
             System.out.println("There is no File");
         }
@@ -166,7 +159,6 @@ public class Main {
                 }
                 flowersDataBase.add(new Flower(params, dataParts[dataParts.length - 1]));
             }
-//            System.out.println(flowersDataBase);
         } catch (Exception e) {
             System.out.println("There is no File");
         }

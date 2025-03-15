@@ -6,15 +6,12 @@ public class Flower implements Comparable<Flower>{
 
     public Flower(double[] parameters,String flowerName){
         this.parameters = parameters;
-//        if(flowerName == null) /*go_kNN()*/ this.flowerName = "Uknown";
-//        else this.flowerName = flowerName;
         this.flowerName = flowerName;
     }
 
     public Flower(double[] parameters) {
         this.parameters = parameters;
     }
-    //if String == null -> kNN.
 
     public double[] getParameters() {
         return parameters;
@@ -46,6 +43,7 @@ public class Flower implements Comparable<Flower>{
             return 1;
         } else return 0;
     }
+
     public double sum(double[] params){
         double sum = 0;
         for(Double d : params){
