@@ -11,9 +11,9 @@ public class Main {
 
     public static void main(String[] args) {
         //Data Loading
-        trainingDataBase = loadTrainingData("iris_training.txt");
-        testingData = loadTestingDataWitoutAnswers("iris_test.txt");
-        testingDataWithAnswers = loadTrainingData("iris_test.txt");
+        trainingDataBase = loadTrainingData("kNN_Implementation/iris_training.txt");
+        testingData = loadTestingDataWitoutAnswers("kNN_Implementation/iris_test.txt");
+        testingDataWithAnswers = loadTrainingData("kNN_Implementation/iris_test.txt");
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter number k(number of neighbours)");
